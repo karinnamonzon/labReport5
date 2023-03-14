@@ -83,7 +83,57 @@ echo 'Finished cloning student-submission'
 ```
 In the code above, there are no changes made from the original lines of `grader.sh`. These lines are used to set up the script so that it is new. The `CPATH` line is used a way to call to a working directory of the `.jar` file that will run the tests. The `rm -rf student-submission` line removes the `student-submission` clone file that may already be saved. `git clone $1 student-submission` creates a new clone that will be used and `echo 'Finished cloning student-submission'` gives indication that the new `student-submission` has been cloned and is ready for the rest of `grade.sh` to run.
 
-### Testing on grading script with files from repositories 
+```
+if [[ -f "student-submission/ListExamples.java" ]]
+then
+    echo 'ListExamples.java found'
+else
+    echo 'ListExamples.java not found'
+    exit 1
+fi 
+```
+This if-else statement looks for the file `ListExamples.java` in the `student-submission` directory. If the file is found then the terminal will print `ListExamples.java found` which is seen by the `echo` command in the statement. It will print `ListExamples.java not found` if the file is not dound and then has `exit 1` which will stop the execution of the rest of `grader.sh`.
+
+```
+cp TestListExamples.java student-submission/
+
+cd student-submission
+
+javac ListExamples.java
+if [[ -f "ListExamples.class" ]] 
+then
+    echo "SUCCESSFUL COMPILE"
+else
+    echo "FAILURE TO COMPILE"
+    exit 2
+fi
+```
+Copying `TestListExamples.java` to the `student-submission/` directory and then using the `cd` command to go into that directory, the `ListExample.java` file is compiled with the use of `javac`. The if-else statement looks for the file `ListExamples.class` that is created by a successful compile, this is indicated by the message `SUCCESSFUL COMPILE` seen in the terminal which uses the `echo` command. If the `ListExamples.class` is not found that means the compile was a failure and the message `FAILURE TO COMPILE` is seen in the terminal which also uses the `echo` command, this then exits from the `grader.sh` script with the `exit 2` command.
+
+
+```
+javac -cp $CPATH *.java
+java -cp $CPATH org.junit.runner.JUnitCore TestListExamples
+
+java -cp $CPATH org.junit.runner.JUnitCore student-submission/*.java > output.txt
+
+grep "Tests run" output.txt > results.txt
+```
+This section in the grading script runs the tester using the `CPATH` directory established at the beginning. This compiles all `*.java` files with `javac` and then runs the tests from the `TestListExamples` file using the `java` command. The result of the tests are put into the `output.txt` file. To help with the formatting within the terminal, these results are saves into `result.txt` with the `grep` command that looks for the `Tests run` pattern.
+
+```
+TESTSRUN=` cut -d ',' -f 1 results.txt `
+
+FAILURES=` cut -d ',' -f 2 results.txt `
+
+NUMFAILURES="${FAILURES//[^0-9]/}"
+
+NUMTESTS="${TESTSRUN//[^0-9]/}"
+```
+These lines are used for formatting the grepped results in `result.txt`. `TESTSRUN` counts and cuts the number value of tests run for `results.txt` while `FAILURES` counts and cuts the number value of tests failed from `results.txt`. `NUMFAILURES` uses the value from `FAILURES` and uses that to format the number of failures in the terminal after the tests have finished. `NUMTESTS` uses the value from `TESTSRUN` and uses that to format the number of tests run in the terminal after the tests have finished. 
+
+
+## Testing on grading script with files from repositories 
 Using `bash grade.sh <link to repository>` to run the bash script on several files:
 
 `bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-lab3`

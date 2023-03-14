@@ -3,9 +3,9 @@
 
 In this lab report, we will be looking at the bash grading script and the changes that were made to the original in order to have a better understanding of hwo bash scripts work.
 
-Here is the link to the repository with the original `grade.sh` bash script: [Original](https://github.com/ucsd-cse15l-w23/list-examples-grader)
+Here is the link to the repository with the original `grade.sh` bash script: [https://github.com/ucsd-cse15l-w23/list-examples-grader](https://github.com/ucsd-cse15l-w23/list-examples-grader)
 
-Here is a link to the repository for my folder with the `grade.sh` [My Grader](https://github.com/karinnamonzon/grader-review-karinnamonzon)
+Here is a link to the repository for my folder with the `grade.sh` [https://github.com/karinnamonzon/grader-review-karinnamonzon](https://github.com/karinnamonzon/grader-review-karinnamonzon)
 
  
 ## Understanding the grading script

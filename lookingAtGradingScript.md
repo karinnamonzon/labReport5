@@ -146,6 +146,7 @@ Running this repository with the grading script shows how there is one test run 
 
 `bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-compile-error`
 Running this repository with the grading script shows that on line 15 there is a missing semicolon which results in a compile error. This is shows in the results in the terminal with the message `FAILURE TO COMPILE`
+
 ![third](https://github.com/karinnamonzon/labReport5/blob/main/third.png?raw=true)
 
 `bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-filename)`

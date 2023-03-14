@@ -71,7 +71,17 @@ NUMTESTS="${TESTSRUN//[^0-9]/}"
 
 ```
 
-### Explaining parts of `bash.sh`
+### Explaining parts of the fixed `grader.sh`
+
+```
+CPATH=".;../lib/junit-4.13.2.jar;../lib/hamcrest-core-1.3.jar"
+
+rm -rf student-submission
+
+git clone $1 student-submission
+echo 'Finished cloning student-submission'
+```
+In the code above, there are no changes made from the original lines of `grader.sh`. These lines are used to set up the script so that it is new. The `CPATH` line is used a way to call to a working directory of the `.jar` file that will run the tests. The `rm -rf student-submission` line removes the `student-submission` clone file that may already be saved. `git clone $1 student-submission` creates a new clone that will be used and `echo 'Finished cloning student-submission'` gives indication that the new `student-submission` has been cloned and is ready for the rest of `grade.sh` to run.
 
 ### Testing on grading script with files from repositories 
 Using `bash grade.sh <link to repository>` to run the bash script on several files:

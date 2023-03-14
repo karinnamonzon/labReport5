@@ -142,14 +142,14 @@ Running this repository with the grading script shows how there was a succesful 
 
 `bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-corrected`
 Running this repository with the grading script shows how there is one test run and passing after fixing the code in lab 3.
-![second]()
+![second](https://github.com/karinnamonzon/labReport5/blob/main/second.png?raw=true)
 
 `bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-compile-error`
 Running this repository with the grading script shows that on line 15 there is a missing semicolon which results in a compile error. This is shows in the results in the terminal with the message `FAILURE TO COMPILE`
-![third]()
+![third](https://github.com/karinnamonzon/labReport5/blob/main/third.png?raw=true)
 
 `bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-filename)`
 Running the grading script with a repository that is missing the `ListExample.java` file shows how it will result in the message `ListExamples.java not found`. There are no tests that are compiled and ran because there is no file to test them from.
-![fourth]()
+![fourth](https://github.com/karinnamonzon/labReport5/blob/main/fourth.png?raw=true)
 
 
